@@ -1,0 +1,15 @@
+<p>bienvenida works!</p>
+
+    <div class="card">
+        <div class="card-header">
+            <h2>RPP</h2>
+            <hr>
+        </div>
+        <div class="card-header">
+            <h4>Datos</h4>            
+        </div>
+        <div *ngIf='miGit != null'>
+            <h1>{{miGit.login}}</h1>
+            <img src="{{miGit.avatar_url}}">
+        </div>
+    </div>
