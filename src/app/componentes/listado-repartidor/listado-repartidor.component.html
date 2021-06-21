@@ -1,0 +1,11 @@
+<h4 class="d-flex justify-content-between align-items-center mb-3" *ngIf="listaRepartidores != null">
+    <!-- <h4>Listado repartidores</h4> -->
+</h4>
+<ul class="list-group mb-3">
+    <li class="list-group-item d-flex justify-content-between" *ngFor="let repartidor of listaRepartidores"
+      (click)="enviarEventoRepartidorSeleccionado(repartidor)">
+        <div>
+            <h6 class="text-info">{{repartidor.nombre}} {{repartidor.apellido}} {{repartidor.capacidadTrans}} </h6>
+        </div>
+    </li>
+</ul>

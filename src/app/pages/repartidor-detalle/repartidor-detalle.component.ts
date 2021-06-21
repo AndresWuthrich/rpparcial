@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Repartidor } from 'src/app/clases/repartidor';
+import { RepartidorService } from 'src/app/services/repartidor.service';
 
 @Component({
   selector: 'app-repartidor-detalle',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RepartidorDetalleComponent implements OnInit {
 
-  constructor() { }
+  listaRepartidores!: Repartidor[];
+  repartidorSeleccionado: Repartidor | null = null;
+  
+  constructor(private repartidorService: RepartidorService) {
+      this.repartidorService.traerTodos().subscribe((repartidores: Repartidor[]) => {
+      console.log(repartidores);
+      this.listaRepartidores = repartidores;
+    });
+
+   }
 
   ngOnInit(): void {
+  }
+
+  obtenerRepartidorSeleccionado(repartidor: Repartidor){
+    this.repartidorSeleccionado = repartidor;
+    console.log(this.repartidorSeleccionado);
   }
 
 }

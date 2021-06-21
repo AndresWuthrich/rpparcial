@@ -12,6 +12,12 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './services/auth.service';
+import { environment } from 'src/environments/environment';
+import { ListadoRepartidorComponent } from './componentes/listado-repartidor/listado-repartidor.component';
+import { InfoRepartidorComponent } from './componentes/info-repartidor/info-repartidor.component';
 
 @NgModule({
   declarations: [
@@ -21,16 +27,21 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     AltaRepartidorComponent,
     RepartidorDetalleComponent,
     SalenPizzasComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    NavbarComponent,
+    ListadoRepartidorComponent,
+    InfoRepartidorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AngularFireModule,
-    AngularFireDatabaseModule
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

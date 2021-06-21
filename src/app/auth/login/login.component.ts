@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Usuario } from 'src/app/clases/usuario';
 
 @Component({
   selector: 'app-login',
@@ -9,6 +10,11 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   public loading: boolean;
+  public autocompletar: string = '';
+  public listaUsuariosAccesoRapido: Usuario[] = [];
+  public usuario: Usuario | null = null;
+  email: string = '';
+  password: string = '';
 
   constructor(public router: Router) {
     this.loading = false;
@@ -80,24 +86,42 @@ export class LoginComponent implements OnInit {
     //   }
   }
 
-  // Autocompletar(){
-  //   this.autocompletar='si';
+  Autocompletar(){
+    this.autocompletar='si';
 
   //   this.usuarioService.traerTodos().subscribe((usuarios: Usuario[]) => {
   //     console.log(usuarios);
   //     this.listaUsuariosAccesoRapido = usuarios;
   //   });
 
+    this.usuario = {
+      denominacion: 'Andrés Wüthrich',
+      email: 'andreswuthrich82@gmail.com',
+      clave: 'adw1982',
+      perfil: 'administrador'
+    }
+    this.listaUsuariosAccesoRapido.push(this.usuario);
+
+    this.usuario = {
+      denominacion: 'Irene Dreiling',
+      email: 'irenedreiling@hotmail.com',
+      clave: 'mid1981',
+      perfil: 'empleado'
+    }
+    this.listaUsuariosAccesoRapido.push(this.usuario);
+
     // this.email="andreswuthrich82@gmail.com";
     // this.password="adw1982";
-  // }
+  }
 
-  // cargarUsuariosAccesoRapido(email: string){
-  //   this.listaUsuariosAccesoRapido.forEach(usuario => {
-  //     if(usuario.email == email){
-  //       this.email=usuario.email;
-  //       this.password=usuario.password;
-  //     }
-  //   });
-  // }
+  cargarUsuariosAccesoRapido(email: string){
+    console.log(this.listaUsuariosAccesoRapido);
+    
+    this.listaUsuariosAccesoRapido.forEach(usuario => {
+      if(usuario.email == email){
+        this.email = usuario.email;
+        this.password = usuario.clave;
+      }
+    });
+  }
 }
