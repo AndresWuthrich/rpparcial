@@ -18,6 +18,9 @@ import { AuthService } from './services/auth.service';
 import { environment } from 'src/environments/environment';
 import { ListadoRepartidorComponent } from './componentes/listado-repartidor/listado-repartidor.component';
 import { InfoRepartidorComponent } from './componentes/info-repartidor/info-repartidor.component';
+import { AltaPizzaComponent } from './pages/alta-pizza/alta-pizza.component';
+import { ListadoPizzaComponent } from './componentes/listado-pizza/listado-pizza.component';
+import { RegistroComponent } from './auth/registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { InfoRepartidorComponent } from './componentes/info-repartidor/info-repa
     PageNotFoundComponent,
     NavbarComponent,
     ListadoRepartidorComponent,
-    InfoRepartidorComponent
+    InfoRepartidorComponent,
+    AltaPizzaComponent,
+    ListadoPizzaComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,

@@ -50,7 +50,7 @@
                     *ngFor="let usuario of listaUsuariosAccesoRapido" disable>
 
                     <button class="btn-lg" (click)="cargarUsuariosAccesoRapido(usuario.email)"><!--<img src="{{usuario.imagenPerfil}}"/>-->
-                      <input type="text" value="{{usuario.perfil}} {{usuario.denominacion}}" disabled>
+                      <input type="text" value="{{usuario.perfil}} {{usuario.nombre}} {{usuario.apellido}}" disabled>
                     </button>
                 </li>
             </ul>

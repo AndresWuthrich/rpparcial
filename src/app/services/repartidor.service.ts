@@ -8,7 +8,7 @@ import { AuthService } from './auth.service';
 import { finalize } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 import { Repartidor } from '../clases/repartidor';
-// import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -47,7 +47,16 @@ export class RepartidorService {
 
   agregarRepartidor(usuario: Repartidor){
 
-    return this.itemsCollection.add(JSON.parse(JSON.stringify(usuario)));
+    return this.itemsCollection.add(JSON.parse(JSON.stringify(usuario))).then(() => {
+      Swal.fire({
+        title: 'Alta de repartidor exitosa'
+      });
+    }).catch((error) => {
+      Swal.fire({
+        title: error.code,
+        text: error.message
+      });
+    });
   }
 
   agregarEspecialista(imagen: any, usuario: Usuario){

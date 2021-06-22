@@ -1,0 +1,56 @@
+<div class="container">
+
+    <form [formGroup]="formRegistro" (ngSubmit)="registro()">
+      <div class="row">
+        <div class="col-md-12 mb-3">
+          <h2>Registro</h2>
+        </div>
+      </div>
+      <div class="row formulario container">
+        <div class="col-md-6 mb-2">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre" formControlName='nombre'>
+          <small class="invalid" *ngIf="formRegistro.get('nombre')?.errors?.required && formRegistro.get('nombre')?.touched">El nombre es requerido</small>
+        </div>
+        <div class="col-md-6 mb-2">
+          <label for="apellido" class="form-label">Apellido</label>
+          <input type="text" class="form-control" id="apellido" placeholder="Ingrese apellido" formControlName='apellido'>
+          <small class="invalid" *ngIf="formRegistro.get('apellido')?.errors?.required && formRegistro.get('apellido')?.touched">El apellido es requerido</small>
+        </div>
+
+        <div class="col-md-12 mb-2">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Ingrese email" formControlName='email'>
+          <small class="invalid" *ngIf="formRegistro.get('email')?.errors?.required && formRegistro.get('email')?.touched">El email es requerido</small>
+        </div>
+        <div class="col-md-12 mb-2">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Ingrese password" formControlName='password'>
+          <small class="invalid" *ngIf="formRegistro.get('password')?.errors?.required && formRegistro.get('password')?.touched">La password es requerida</small>
+          <small class="invalid" *ngIf="formRegistro.get('password')?.errors?.minLength && formRegistro.get('password')?.touched">La password debe tener mínimo 6 caracteres</small>
+        </div>
+
+        <div class="col-md-6 mb-2">
+            <label for="perfil" class="form-label">Perfil</label>
+            <select class="form-select" id="perfil" formControlName='perfil'>
+              <option value="administrador">Administrador</option>
+              <option value="empleado">Empleado</option>
+            </select>
+            <small class="invalid" *ngIf="formRegistro.get('perfil')?.errors?.required && formRegistro.get('perfil')?.touched">
+                El perfil es requerido</small>
+          </div>
+      </div> 
+      
+      <div class="row container">
+        <div class="col-md-12 d-grid gap-2 container2">
+          <button type="submit" class="btn btn-primary btn-block" [disabled]="signup">
+              <span *ngIf="signup" class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+            Registro
+          </button>
+        </div>
+        <div class="col-md-12 d-grid gap-2 container2">
+          <button class="btn btn-danger btn-block" routerLink="/">Me arrepentí</button>
+        </div>
+      </div>
+    </form>
+</div>

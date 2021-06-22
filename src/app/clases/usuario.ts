@@ -1,6 +1,8 @@
 export class Usuario {
-    denominacion: string = '';
+    nombre: string = '';
+    apellido: string = '';
     email: string = '';
     clave: string = '';
     perfil: string = '';
+    uid?: string;
 }

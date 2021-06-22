@@ -101,7 +101,7 @@ export class AuthService {
 
   Logout(){
     this.fireStoreAuth.signOut();
-    this.router.navigate(['home']);
+    this.router.navigate(['bienvenida']);
 
   }
 

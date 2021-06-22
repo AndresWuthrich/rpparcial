@@ -20,7 +20,7 @@ export class UsuarioService {
   public itemsCollection: AngularFirestoreCollection<Usuario>;
   public usuarios: Observable<Usuario[]>;
   img1: any;
-  img2: any;
+  // img2: any;
   public usuarioLogueado: Usuario | null = null;
 
   constructor(private afs: AngularFirestore, private storage: AngularFireStorage, public auth: AuthService) {
@@ -45,7 +45,7 @@ export class UsuarioService {
    }
 
   agregarUsuario(usuario: Usuario){
-
+    console.log("serv", usuario);
     return this.itemsCollection.add(JSON.parse(JSON.stringify(usuario)));
   }
 
