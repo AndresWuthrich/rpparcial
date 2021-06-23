@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminGuard } from './guards/admin.guard';
 import { AltaRepartidorComponent } from './pages/alta-repartidor/alta-repartidor.component';
 import { BienvenidaComponent } from './pages/bienvenida/bienvenida.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
@@ -11,7 +12,7 @@ const routes: Routes = [
   { path: 'altarepartidor', component: AltaRepartidorComponent },
   { path: 'repartidordetalle', component: RepartidorDetalleComponent },
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
-  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate:[AdminGuard] },
   { path: '**', component: PageNotFoundComponent}
 ];
 

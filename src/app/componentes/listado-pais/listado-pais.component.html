@@ -1,0 +1,15 @@
+<p>listado-pais works!</p>
+
+<h4 class="d-flex justify-content-between align-items-center mb-3" *ngIf="listaPais != null">
+    <!-- <h4>Listado repartidores</h4> -->
+</h4>
+<ul class="list-group mb-3">
+    <li class="list-group-item d-flex justify-content-between" *ngFor="let pais of listaPais"
+      (click)="enviarEventoPaisSeleccionado(pais)">
+        <div>
+            <h6 class="text-info">{{pais.name}}  </h6>
+            <!-- <small>{{pais.region}}</small> -->
+            <img src="{{pais.flag}}">
+        </div>
+    </li>
+</ul>

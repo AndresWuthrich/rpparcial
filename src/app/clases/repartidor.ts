@@ -4,6 +4,7 @@ export class Repartidor {
     dni: number = 0;
     edad: number = 0;
     capacidadTrans: number = 0;
-    paisOrigen: string = '';
+    paisOrigen?: string = '';
     unidadPropia: boolean = false;
+    banderaPais?: string = '';
 }

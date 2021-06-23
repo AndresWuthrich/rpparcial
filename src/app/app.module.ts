@@ -21,6 +21,8 @@ import { InfoRepartidorComponent } from './componentes/info-repartidor/info-repa
 import { AltaPizzaComponent } from './pages/alta-pizza/alta-pizza.component';
 import { ListadoPizzaComponent } from './componentes/listado-pizza/listado-pizza.component';
 import { RegistroComponent } from './auth/registro/registro.component';
+import { ListadoPaisComponent } from './componentes/listado-pais/listado-pais.component';
+import { PaisRepartidorComponent } from './componentes/pais-repartidor/pais-repartidor.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { RegistroComponent } from './auth/registro/registro.component';
     InfoRepartidorComponent,
     AltaPizzaComponent,
     ListadoPizzaComponent,
-    RegistroComponent
+    RegistroComponent,
+    ListadoPaisComponent,
+    PaisRepartidorComponent
   ],
   imports: [
     BrowserModule,

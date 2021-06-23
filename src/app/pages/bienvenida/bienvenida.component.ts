@@ -21,5 +21,4 @@ export class BienvenidaComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

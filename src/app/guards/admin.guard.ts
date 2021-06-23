@@ -21,16 +21,17 @@ export class AdminGuard implements CanActivate, CanDeactivate<unknown> {
       console.log("verif");
 
       var user = this.auth.usuario;
+      console.log("1 ",user);
       // var user = await this.auth.getCurrentUser();
       if (user?.email != null && user) {
-        console.log(user.email);
+        console.log("2 ",user.email);
         var dataUser: any = this.usuarioService.obtenerUsuarioPorEmail(user.email);
         this.usuarioLogueado = dataUser;
         console.log("perfil",this.usuarioLogueado?.perfil);
         if(this.usuarioLogueado?.perfil == 'administrador'){
           return true;
         } else {
-          return true;
+          return false;
         }
       } else {
         return false;
