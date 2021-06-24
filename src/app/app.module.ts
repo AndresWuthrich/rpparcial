@@ -25,6 +25,10 @@ import { ListadoPaisComponent } from './componentes/listado-pais/listado-pais.co
 import { PaisRepartidorComponent } from './componentes/pais-repartidor/pais-repartidor.component';
 import { ModificaPizzaComponent } from './componentes/modifica-pizza/modifica-pizza.component';
 import { BajaPizzaComponent } from './componentes/baja-pizza/baja-pizza.component';
+import { GestionPizzaComponent } from './pages/gestion-pizza/gestion-pizza.component';
+import { GestionRepartoComponent } from './pages/gestion-reparto/gestion-reparto.component';
+import { AltaRepartoComponent } from './pages/alta-reparto/alta-reparto.component';
+import { ListadoPizzaSelComponent } from './componentes/listado-pizza-sel/listado-pizza-sel.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +48,11 @@ import { BajaPizzaComponent } from './componentes/baja-pizza/baja-pizza.componen
     ListadoPaisComponent,
     PaisRepartidorComponent,
     ModificaPizzaComponent,
-    BajaPizzaComponent
+    BajaPizzaComponent,
+    GestionPizzaComponent,
+    GestionRepartoComponent,
+    AltaRepartoComponent,
+    ListadoPizzaSelComponent
   ],
   imports: [
     BrowserModule,

@@ -1,19 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Pizza } from 'src/app/clases/pizza';
+import { Repartidor } from 'src/app/clases/repartidor';
+import { Reparto } from 'src/app/clases/reparto';
 import { Usuario } from 'src/app/clases/usuario';
 import { AuthService } from 'src/app/services/auth.service';
 import { PizzaService } from 'src/app/services/pizza.service';
+import { RepartoService } from 'src/app/services/reparto.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
-  selector: 'app-alta-pizza',
-  templateUrl: './alta-pizza.component.html',
-  styleUrls: ['./alta-pizza.component.css']
+  selector: 'app-alta-reparto',
+  templateUrl: './alta-reparto.component.html',
+  styleUrls: ['./alta-reparto.component.css']
 })
-export class AltaPizzaComponent implements OnInit {
+export class AltaRepartoComponent implements OnInit {
 
   // email: string = '';
   // password: string = '';
@@ -22,8 +25,9 @@ export class AltaPizzaComponent implements OnInit {
   public condicion: boolean = false;
   public perfil: string = '';
   // private imagenPerfil: any;
+  repartidorSeleccionado: Repartidor | null = null;
 
-  public pizzaAlta: Pizza = new Pizza();
+  public repartoAlta: Reparto = new Reparto();
   // public especialidadAlta: Especialidad = new Especialidad();
   // public listaEspecialidades: Especialidad[] = [];
   // public banderaEspecialidadSeleccionada = true;
@@ -31,13 +35,15 @@ export class AltaPizzaComponent implements OnInit {
   // public descripcionEspecialidad: string = '';
   // public listaDiasSeleccionadas: Array<DiasAtencion> = new Array<DiasAtencion>();  
 
-  private dbpath = '/pizzas';
+  @Input() repartidorElegido: Repartidor | null = null;
+  
+  private dbpath = '/repartos';
 
   usuarioIngresado: any;
   
   public formRegistro: FormGroup;
 
-  constructor(private fb: FormBuilder, private usuarioService: UsuarioService, private pizzaService: PizzaService, private router: Router, public auth: AuthService) {
+  constructor(private fb: FormBuilder, private repartoService: RepartoService, private usuarioService: UsuarioService, private pizzaService: PizzaService, private router: Router, public auth: AuthService) {
     // this.usuarioIngresado = this.authService.usuario;
     this.signup = false;
     this.registroUp = false;
@@ -45,9 +51,11 @@ export class AltaPizzaComponent implements OnInit {
     this.formRegistro = this.fb.group({
       'nombre':['', Validators.required],
       'ingredientes':['', Validators.required],
-      'precio':['', [Validators.required, Validators.min(1)]],
-      'peso':['', [Validators.required, Validators.min(500), Validators.max(1000)]]
+      'pizza':['', Validators.required]
     });
+
+    console.log(this.repartidorSeleccionado);
+    console.log(this.repartidorElegido);
 
     // this.especialidadService.traerTodas().subscribe((especialidades: Especialidad[]) => {
     //   console.log(especialidades);
@@ -86,13 +94,10 @@ export class AltaPizzaComponent implements OnInit {
     }, 3000);
 
     // this.auth.Registro(email, password).then(value => { 
-    //   console.log(value?.user?.uid);
 
-      this.pizzaAlta.nombre = this.formRegistro.controls['nombre'].value;
-      this.pizzaAlta.ingredientes = this.formRegistro.controls['ingredientes'].value;
-      this.pizzaAlta.precio = this.formRegistro.controls['precio'].value;
-      this.pizzaAlta.peso = this.formRegistro.controls['peso'].value;
-      this.pizzaAlta.estado = "";
+      this.repartoAlta.reparto = this.formRegistro.controls['nombre'].value;
+      this.repartoAlta.repartidor = this.formRegistro.controls['ingredientes'].value;
+      this.repartoAlta.pizzas = this.formRegistro.controls['pizza'].value;
       // this.usuarioAlta.uid = this.auth.usuario.uid;
       // this.usuarioAlta.uid = value?.user?.uid;
  
@@ -121,7 +126,7 @@ export class AltaPizzaComponent implements OnInit {
 
         // console.log(this.imagenPerfil);
         // this.usuarioService.agregarEspecialista(this.imagenPerfil, this.usuarioAlta);
-        this.pizzaService.agregarPizza(this.pizzaAlta);
+        this.repartoService.agregarReparto(this.repartoAlta);
         // this.email = this.password = '';
       // }
       // this.router.navigate(['verificacion-email']);
@@ -153,4 +158,9 @@ export class AltaPizzaComponent implements OnInit {
   //     this.especialidadService.agregarEspecialidad(this.especialidadAlta);
   //   }
   // }
+  obtenerRepartidorSeleccionado(repartidor: Repartidor){
+    this.repartidorSeleccionado = repartidor;
+    console.log(this.repartidorSeleccionado);
+  }
+
 }

@@ -1,0 +1,67 @@
+<!-- <p>alta-reparto works!</p> -->
+
+<!-- <form #captchaProtectedForm="ngForm"> -->
+    <body class="container">
+        <!-- <button class="btn fotoPaciente" (click)="elegirPerfil('paciente')" *ngIf="perfil!='paciente' && perfil!='especialista'">Paciente</button>
+        <button class="btn fotoEspecialista" (click)="elegirPerfil('especialista')" *ngIf="perfil!='paciente' && perfil!='especialista'">Especialista</button> -->
+      
+        <div> <!--*ngIf="perfil=='paciente' || perfil=='especialista'" class="paciente" [ngClass]="{especialista: perfil=='especialista'}">-->
+          <form [formGroup]="formRegistro" (ngSubmit)="registro()" *ngIf="repartidorElegido != null" > <!--*ngIf="perfil=='paciente' || perfil=='especialista'">-->
+            <div class="row">
+              <div class="col-md-12 mb-3">
+                <!-- <h2>Alta pizza</h2> -->
+              </div>
+            </div>
+            <div class="row formulario container">
+              <div class="col-md-12 mb-2">
+                <label for="nombre" class="form-label">Reparto</label>
+                <input type="number" class="form-control" id="nombre" formControlName='nombre'>
+                <small class="invalid" *ngIf="formRegistro.get('nombre')?.errors?.required && formRegistro.get('nombre')?.touched">El pedido es requerido</small>
+              </div>
+              <div class="col-md-12 mb-2">
+                <label for="ingredientes" class="form-label">Repartidor</label>
+                <input type="text" class="form-control" id="ingredientes" placeholder="Ingrese repartidor" formControlName='ingredientes' 
+            value="{{repartidorElegido.nombre}}">
+                
+                <small class="invalid" *ngIf="formRegistro.get('ingredientes')?.errors?.required && formRegistro.get('ingredientes')?.touched">El repartidor es requerido</small>
+            </div>
+              <div class="col-md-12 mb-2">
+                <label for="pizza" class="form-label">Pizza/s</label>
+                <input type="text" class="form-control" id="pizza" placeholder="Ingrese pizza" formControlName='pizza'> 
+                <!-- value="[repartidorElegido]='repartidorSeleccionado'" -->
+                
+                <small class="invalid" *ngIf="formRegistro.get('pizza')?.errors?.required && formRegistro.get('pizza')?.touched">El repartidor es requerido</small>
+              </div>
+  
+              <div class="row container">
+                <div class="col-md-12 d-grid">
+                  <button type="submit" class="w-100 btn btn-lg btn-primary" [disabled]="signup">
+                      <span *ngIf="signup" class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                    Registro
+                  </button>
+                  <br>
+                </div>
+              <div class="col-md-12 d-grid">
+                <button class="w-100 btn btn-lg btn-danger" routerLink="/">Me arrepentí</button>
+                <br>
+              </div>
+            </div>
+          </div>
+        </form>
+        </div>
+      
+        <!-- <div class="col-md-12" id="box" *ngIf="perfil=='especialista'">
+          <div class="card">
+              <div class="card-body">
+                  <div class="form-group col-md-5">
+                      <label class="col-form-label" for="descripcionEspecialidad">Nueva especialidad</label>
+                      <input type="text" class="form-control" id="descripcionEspecialidad" [(ngModel)]="descripcionEspecialidad"
+                          name="descripcionEspecialidad" placeholder="Ingrese el nombre de la especialidad">
+      
+                      <button type="button" class="btn btn-primary btn-block" (click)="agregarNuevaEspecialidad()">Agregar Especialidad</button>
+                  </div>
+              </div>
+          </div>
+        </div> -->
+      </body>
+      <!-- </form> -->
