@@ -3,4 +3,5 @@ export class Pizza {
     ingredientes: string = '';
     precio: number = 0;
     peso: number = 0;
+    estado?: string = '';
 }

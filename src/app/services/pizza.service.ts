@@ -68,8 +68,8 @@ export class PizzaService {
     return this.pizzas;
   }
 
-  async obtenerDocumentoUsuario(user: Usuario) {
-    var value = await this.afs.collection(this.dbPath).ref.where('email', '==', user.email).get();
+  async obtenerDocumentoPizza(pizza: Pizza) {
+    var value = await this.afs.collection(this.dbPath).ref.where('nombre', '==', pizza.nombre).get();
     if (value.docs[0].exists) {
       return value.docs[0].id;
     }
@@ -86,4 +86,16 @@ export class PizzaService {
     })
     });
   }
+
+  async borradoPizza(pizzaDoc: any){
+    return pizzaDoc.update({
+      estado: "borrado"
+    }).then(() => {
+      Swal.fire({
+        title: 'Borrado exitoso'
+      });
+    });
+
+  }
+
 }

@@ -1,8 +1,9 @@
-<p>modifica-pizza works!</p>
+<!-- <p>modifica-pizza works!</p> -->
 
 <div *ngIf="pizzaElegida != null">
     <div class="card-body">
         <h5>{{pizzaElegida.nombre}}</h5>
         <!-- <img src="{{repartidorElegido.banderaPais}}"> -->
+        <button type="button" class="w-100 btn btn-lg btn-warning" (click)="modificarPizza(pizzaElegida)">Modificar</button> 
     </div>
 </div>

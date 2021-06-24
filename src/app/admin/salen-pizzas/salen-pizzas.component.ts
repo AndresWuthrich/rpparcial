@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Pizza } from 'src/app/clases/pizza';
 import { PizzaService } from 'src/app/services/pizza.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-salen-pizzas',
@@ -9,10 +11,12 @@ import { PizzaService } from 'src/app/services/pizza.service';
 })
 export class SalenPizzasComponent implements OnInit {
 
+  private dbPath = '/pizzas';
+
   listaPizzas!: Pizza[];
   pizzaSeleccionada: Pizza | null = null;
   
-  constructor(private pizzaService: PizzaService) {
+  constructor(private afs: AngularFirestore, private pizzaService: PizzaService) {
       this.pizzaService.traerTodas().subscribe((pizzas: Pizza[]) => {
       console.log(pizzas);
       this.listaPizzas = pizzas;
