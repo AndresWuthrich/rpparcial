@@ -191,7 +191,7 @@ export class UsuarioService {
     return new Promise((resolve, reject) => {this.afs.collection(this.dbPath).get().subscribe((querySnapshot) => {
       let doc = querySnapshot.docs.find(doc => (doc.data() as Usuario).email == email);
       resolve(doc?.data());
-      console.log(doc);
+      console.log("usuarioservice ",doc);
     })
     });
   }

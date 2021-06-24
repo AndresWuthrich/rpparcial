@@ -4,8 +4,6 @@ import { Router } from '@angular/router';
 import { first} from 'rxjs/operators';
 
 import { AngularFireAuth } from '@angular/fire/auth';
-// import { Observable } from 'rxjs/internal/Observable';
-// import { throwError } from 'rxjs';
 // import Swal from 'sweetalert2';
 
 @Injectable({
@@ -80,11 +78,12 @@ export class AuthService {
   //   // this.router.navigate(['bienvenido']);
   // })
     
-  if(resultado.user?.emailVerified==false){
-    console.log('Envio de verificacion exitoso');
+  // if(resultado.user?.emailVerified==false){
+  //   console.log('Envio de verificacion exitoso');
     // this.sendVerificationEmail();
-  }
+  // }
   
+  console.log("res ",resultado);
   return resultado;
   }catch(error)  {
   // //   this.errorLogin = error.message;
@@ -102,7 +101,6 @@ export class AuthService {
   Logout(){
     this.fireStoreAuth.signOut();
     this.router.navigate(['bienvenida']);
-
   }
 
   obtenerUsuarioActual() {

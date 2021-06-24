@@ -46,7 +46,7 @@ export class AltaPizzaComponent implements OnInit {
       'nombre':['', Validators.required],
       'ingredientes':['', Validators.required],
       'precio':['', [Validators.required, Validators.min(1)]],
-      'peso':['', [Validators.required, Validators.min(500), Validators.min(1000)]]
+      'peso':['', [Validators.required, Validators.min(500), Validators.max(1000)]]
     });
 
     // this.especialidadService.traerTodas().subscribe((especialidades: Especialidad[]) => {

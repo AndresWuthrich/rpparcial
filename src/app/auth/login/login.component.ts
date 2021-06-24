@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Usuario } from 'src/app/clases/usuario';
 import { AuthService } from 'src/app/services/auth.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -32,61 +33,37 @@ export class LoginComponent implements OnInit {
       this.loading = false;
     }, 3000);
 
-    // try{
+    try{
       const usuarioLogin = await this.auth.Ingresar(this.email, this.password);
       console.log('IN!!!', usuarioLogin);
 
 
-      //if (usuarioLogin) && usuarioLogin.user?.emailVerified)
-      //   console.log('USER', usuarioLogin);
+      if (usuarioLogin){// && usuarioLogin.user?.emailVerified)
+         console.log('USER', usuarioLogin.user.uid);
 
-        // this.usuarioService.traerTodos().subscribe((usuarios: Usuario[]) => {
-        //   console.log(usuarios);
-        //   usuarios.forEach(usuario => {
-        //     if(usuario.uid == usuarioLogin.user.uid){
-      //         if(usuario.perfil == 'especialista' && usuario.cuentaAprobada == false ){
+        var flag = 0; 
+        this.usuarioService.traerTodos().subscribe((usuarios: Usuario[]) => {
+          usuarios.forEach(usuario => {
+            console.log('uid', usuario.uid);
+            if(usuario.uid == usuarioLogin.user.uid){
+              flag = 1;     
+              this.router.navigate(['bienvenida']);           
+            } 
+         })
+         if(flag == 0){
+          this.router.navigate(['registro']);  
+        }
+      });
+      }
+    }catch (error){
+ 
+      Swal.fire({
+        title: error.code,
+        text: error.message
+      });
+      }
 
-      //           console.log('HOLA', usuarioLogin);
-      //           console.log('HOLA2', usuario);
-
-      //           this.auth.Logout();
-
-      //           Swal.fire({
-      //             title: 'Cuenta de usuario especialista debe ser aprobada por administrador'
-      //           });
-
-                // if(usuario.perfil == 'administrador'){
-                //   this.router.navigate(['admin']);
-                // } else {
-                //   this.router.navigate(['home']);
-                // }
-
-                // this.router.navigate(['home']);
-      //         } else {
-
-                 this.router.navigate(['bienvenida']);
-      //         }
-        //     }
-        //   })
-        // });
-      //   // this.router.navigate(['bienvenido']);
-      // }else if (usuarioLogin && usuarioLogin.user?.emailVerified==false){
-      //   this.router.navigate(['verificacion-email']);
-      // } else {
-      //   this.router.navigate(['registro']);    
-      // } 
-    // }catch (error){
-    // console.log('error');
-    // }
-
-    // this.email=this.password="";
-
-    // if(this.auth.errorLogin){
-    //   Swal.fire({
-    //     title: this.auth.errorLogin
-    //   });
-    //   }
-  }
+    }
 
   Autocompletar(){
     this.autocompletar='si';
@@ -113,9 +90,6 @@ export class LoginComponent implements OnInit {
     //   perfil: 'empleado'
     // }
     // this.listaUsuariosAccesoRapido.push(this.usuario);
-
-    // this.email="andreswuthrich82@gmail.com";
-    // this.password="adw1982";
   }
 
   cargarUsuariosAccesoRapido(email: string){

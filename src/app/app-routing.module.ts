@@ -12,7 +12,8 @@ const routes: Routes = [
   { path: 'altarepartidor', component: AltaRepartidorComponent },
   { path: 'repartidordetalle', component: RepartidorDetalleComponent },
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
-  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate:[AdminGuard] },
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate: [AdminGuard] },
+  // { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
   { path: '**', component: PageNotFoundComponent}
 ];
 

@@ -1,6 +1,3 @@
-<app-navbar></app-navbar>
-<br>
-
 <!-- <form #captchaProtectedForm="ngForm"> -->
     <body class="container">
       <!-- <button class="btn fotoPaciente" (click)="elegirPerfil('paciente')" *ngIf="perfil!='paciente' && perfil!='especialista'">Paciente</button>
@@ -10,27 +7,27 @@
         <form [formGroup]="formRegistro" (ngSubmit)="registro()"> <!--*ngIf="perfil=='paciente' || perfil=='especialista'">-->
           <div class="row">
             <div class="col-md-12 mb-3">
-              <h2>Alta pizza</h2>
+              <!-- <h2>Alta pizza</h2> -->
             </div>
           </div>
           <div class="row formulario container">
-            <div class="col-md-6 mb-2">
+            <div class="col-md-12 mb-2">
               <label for="nombre" class="form-label">Nombre</label>
               <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre" formControlName='nombre'>
               <small class="invalid" *ngIf="formRegistro.get('nombre')?.errors?.required && formRegistro.get('nombre')?.touched">El nombre es requerido</small>
             </div>
-            <div class="col-md-6 mb-2">
+            <div class="col-md-12 mb-2">
               <label for="ingredientes" class="form-label">Ingredientes</label>
               <input type="text" class="form-control" id="ingredientes" placeholder="Detalle ingredientes" formControlName='ingredientes'>
               <small class="invalid" *ngIf="formRegistro.get('ingredientes')?.errors?.required && formRegistro.get('ingredientes')?.touched">El detalle de ingredientes es requerido</small>
             </div>
-            <div class="col-md-6 mb-2">
+            <div class="col-md-12 mb-2">
               <label for="precio" class="form-label">Precio $</label>
               <input type="number" class="form-control" id="precio" placeholder="Ingrese precio" formControlName='precio'>
               <small class="invalid" *ngIf="formRegistro.get('precio')?.errors?.required && formRegistro.get('precio')?.touched">El precio es requerido</small>
               <small class="invalid" *ngIf="formRegistro.get('precio')?.errors?.min && formRegistro.get('precio')?.touched ">El precio debe ser mayor a $1</small>
             </div>
-            <div class="col-md-6 mb-2">
+            <div class="col-md-12 mb-2">
                 <label for="peso" class="form-label">Peso en gramos</label>
                 <input type="number" class="form-control" id="peso" placeholder="Ingrese peso" formControlName='peso'>
                 <small class="invalid" *ngIf="formRegistro.get('peso')?.errors?.required && formRegistro.get('peso')?.touched">El peso es requerido</small>
@@ -44,9 +41,11 @@
                     <span *ngIf="signup" class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
                   Registro
                 </button>
+                <br>
               </div>
             <div class="col-md-12 d-grid gap-2 container2">
               <button class="btn btn-danger btn-block" routerLink="/">Me arrepentí</button>
+              <br>
             </div>
           </div>
         </div>

@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Pizza } from 'src/app/clases/pizza';
-import { Repartidor } from 'src/app/clases/repartidor';
 
 @Component({
   selector: 'app-listado-pizza',
