@@ -95,7 +95,7 @@ export class AltaRepartoComponent implements OnInit {
 
     // this.auth.Registro(email, password).then(value => { 
 
-      this.repartoAlta.reparto = this.formRegistro.controls['nombre'].value;
+      // this.repartoAlta.reparto = this.formRegistro.controls['nombre'].value;
       this.repartoAlta.repartidor = this.formRegistro.controls['ingredientes'].value;
       this.repartoAlta.pizzas = this.formRegistro.controls['pizza'].value;
       // this.usuarioAlta.uid = this.auth.usuario.uid;

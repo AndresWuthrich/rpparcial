@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { AngularFireStorage } from '@angular/fire/storage';
 import { Pizza } from 'src/app/clases/pizza';
 import { PizzaService } from 'src/app/services/pizza.service';
 import Swal from 'sweetalert2';
@@ -22,11 +21,12 @@ export class BajaPizzaComponent implements OnInit {
   }
   
   async borrarPizza(pizza: Pizza){
-    var documento: any = this.pizzaService.obtenerDocumentoPizza(pizza);
-console.log(documento);
-    var pizzaDoc = this.afs.collection(this.dbPath).doc(documento);
-    console.log(pizzaDoc);
+    var documento: any = await this.pizzaService.obtenerDocumentoPizza(pizza);
+console.log("doc",documento);
+    // var pizzaDoc = this.afs.collection(this.dbPath).doc(documento);
+    // console.log("pizDoc",pizzaDoc);
 
+    return await this.afs.collection(this.dbPath).doc(documento).delete();
     // return pizzaDoc.update({
     //   estado: "borrado"
     // }).then(() => {
@@ -35,7 +35,7 @@ console.log(documento);
     //   });
     // });
 
-    this.pizzaService.borradoPizza(pizzaDoc);
+    // this.pizzaService.borradoPizza(pizzaDoc);
 
   }
 

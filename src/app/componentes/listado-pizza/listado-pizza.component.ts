@@ -9,6 +9,7 @@ import { Pizza } from 'src/app/clases/pizza';
 export class ListadoPizzaComponent implements OnInit {
 
   @Output() eventoPizzaSeleccionada: EventEmitter<any> = new EventEmitter<any>();
+  @Output() eventoPizzasSeleccionadas: EventEmitter<any> = new EventEmitter<any>();
   @Input() listaPizzas!: Pizza[];
 
   constructor() { }
@@ -19,5 +20,6 @@ export class ListadoPizzaComponent implements OnInit {
   enviarEventoPizzaSeleccionada(pizza: Pizza){
     console.log("1");
     this.eventoPizzaSeleccionada.emit(pizza);
+    // this.
   }
 }

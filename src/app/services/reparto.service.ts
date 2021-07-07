@@ -60,35 +60,4 @@ export class RepartoService {
   traerTodos(){
     return this.repartos;
   }
-
-  async obtenerDocumentoPizza(pizza: Pizza) {
-    var value = await this.afs.collection(this.dbPath).ref.where('nombre', '==', pizza.nombre).get();
-    if (value.docs[0].exists) {
-      return value.docs[0].id;
-    }
-    else {
-      return null;
-    }
-  }
-
-  async obtenerUsuarioPorEmail(email: string) {
-    return new Promise((resolve, reject) => {this.afs.collection(this.dbPath).get().subscribe((querySnapshot) => {
-      let doc = querySnapshot.docs.find(doc => (doc.data() as Usuario).email == email);
-      resolve(doc?.data());
-      console.log(doc);
-    })
-    });
-  }
-
-  async borradoPizza(pizzaDoc: any){
-    return pizzaDoc.update({
-      estado: "borrado"
-    }).then(() => {
-      Swal.fire({
-        title: 'Borrado exitoso'
-      });
-    });
-
-  }
-
 }
