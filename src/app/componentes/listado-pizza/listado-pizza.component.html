@@ -5,7 +5,7 @@
     <li class="list-group-item d-flex justify-content-between" *ngFor="let pizza of listaPizzas"
       (click)="enviarEventoPizzaSeleccionada(pizza)">
         <div>
-            <h6 class="text-info">{{pizza.nombre}} Ingredientes:{{pizza.ingredientes}} Precio:{{pizza.precio}} Peso:{{pizza.peso}}</h6>
+            <h6 class="text-info">{{pizza.nombre}}, Ingredientes: {{pizza.ingredientes}}, Precio: {{pizza.precio}}, Peso: {{pizza.peso}}</h6>
         </div>
     </li>
 </ul>

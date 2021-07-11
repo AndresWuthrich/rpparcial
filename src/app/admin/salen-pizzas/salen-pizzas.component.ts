@@ -17,7 +17,7 @@ export class SalenPizzasComponent implements OnInit {
   pizzaSeleccionada: Pizza | null = null;
   
   constructor(private afs: AngularFirestore, private pizzaService: PizzaService) {
-      this.pizzaService.traerTodas().subscribe((pizzas: Pizza[]) => {
+    this.pizzaService.traerTodas().subscribe((pizzas: Pizza[]) => {
       console.log(pizzas);
       this.listaPizzas = pizzas;
     });

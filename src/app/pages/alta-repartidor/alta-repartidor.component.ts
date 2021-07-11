@@ -48,7 +48,7 @@ export class AltaRepartidorComponent implements OnInit {
       'edad':['', [Validators.required, Validators.min(18), Validators.max(99)]],
       'dni':['', [Validators.required, Validators.min(1000000)]],
       'capacidad':['', Validators.required],
-      'paisOrigen':['', Validators.required],
+      'paisOrigen':[''],// Validators.required],
       'unidadPropia':['', Validators.required]
       // 'imagen':['', Validators.required],      
     });
@@ -61,7 +61,6 @@ export class AltaRepartidorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.agregarDias();
   }
 
   cambioDeRegion(){
@@ -78,20 +77,6 @@ export class AltaRepartidorComponent implements OnInit {
     });
   }
   
-
-  // agregarDias() {
-  //   this.listaDiasSeleccionadas.push(new DiasAtencion(true, 'Lunes', 8, 19));
-  //   this.listaDiasSeleccionadas.push(new DiasAtencion(true, 'Martes', 8, 19));
-  //   this.listaDiasSeleccionadas.push(new DiasAtencion(true, 'Miercoles', 8, 19));
-  //   this.listaDiasSeleccionadas.push(new DiasAtencion(true, 'Jueves', 8, 19));
-  //   this.listaDiasSeleccionadas.push(new DiasAtencion(true, 'Viernes', 8, 19));
-  //   this.listaDiasSeleccionadas.push(new DiasAtencion(true, 'Sabado', 8, 14));
-  // }
-
-  // elegirPerfil(perfil: string){
-  //   this.perfil = perfil;
-  // }
-
   async registro(){
     console.log(this.formRegistro.getRawValue());
 
@@ -103,9 +88,6 @@ export class AltaRepartidorComponent implements OnInit {
       this.signup = false;
     }, 3000);
 
-    // this.auth.Registro(email, password).then(value => { 
-    //   console.log(value?.user?.uid);
-
       this.repartidorAlta.nombre = this.formRegistro.controls['nombre'].value;
       this.repartidorAlta.apellido = this.formRegistro.controls['apellido'].value;
       this.repartidorAlta.edad = this.formRegistro.controls['edad'].value;
@@ -114,63 +96,9 @@ export class AltaRepartidorComponent implements OnInit {
       this.repartidorAlta.paisOrigen = this.paisSeleccionado?.name;
       this.repartidorAlta.unidadPropia = this.formRegistro.controls['unidadPropia'].value;
       this.repartidorAlta.banderaPais = this.paisSeleccionado?.flag;
-      // if(this.perfil=='paciente'){
-      //   this.usuarioAlta.imagenPerfil2 = this.formRegistro.controls['imagen2'].value;
-      //   this.usuarioAlta.obraSocial = this.formRegistro.controls['obraSocial'].value;
-      //   this.usuarioAlta.cuentaAprobada = true;
-        
-      //   console.log(this.imagenPerfil);
-      //   console.log(this.imagenPerfil2);
-      //   this.usuarioService.agregarPaciente(this.imagenPerfil, this.imagenPerfil2, this.usuarioAlta);
-        // this.email = this.password = '';
-  
-      // } else {
-        // this.usuarioAlta.especialidad = this.formRegistro.controls['especialidad'].value;
-        // this.usuarioAlta.especialidad = this.listaEspecialidadesSeleccionadas;
 
-        // this.listaDiasSeleccionadas.push(new DiasAtencion(true, 'Lunes', 8, 19));
-        // this.listaDiasSeleccionadas.push(new DiasAtencion(true, 'Martes', 8, 19));
-        // this.listaDiasSeleccionadas.push(new DiasAtencion(true, 'Miercoles', 8, 19));
-        // this.listaDiasSeleccionadas.push(new DiasAtencion(true, 'Jueves', 8, 19));
-        // this.listaDiasSeleccionadas.push(new DiasAtencion(true, 'Viernes', 8, 19));
-        // this.listaDiasSeleccionadas.push(new DiasAtencion(true, 'Sabado', 8, 14));
-
-        // this.usuarioAlta.horarioAtencion = this.listaDiasSeleccionadas;
-
-        // console.log(this.imagenPerfil);
-        // this.usuarioService.agregarEspecialista(this.imagenPerfil, this.usuarioAlta);
-        this.repartidorService.agregarRepartidor(this.repartidorAlta);
-        // this.email = this.password = '';
-      // }
-      // this.router.navigate(['verificacion-email']);
-      // this.router.navigate(['bienvenido']);
-      // });
-    // console.log(this.auth.usuario.uid);
+      this.repartidorService.agregarRepartidor(this.repartidorAlta);
   }
-
-  // cargarImagen(event: any): void {
-  //   this.imagenPerfil = event.target.files[0];
-  //   console.log(this.imagenPerfil);
-  // }
-
-  // agregarEspecialidad(especialidad: Especialidad){
-  //   this.banderaEspecialidadSeleccionada = false;
-  //   if(this.listaEspecialidadesSeleccionadas.includes(especialidad)){
-
-  //   } else{
-  //     this.listaEspecialidadesSeleccionadas.push(especialidad);
-  //     this.formRegistro.controls['especialidad'].setValue(this.listaEspecialidadesSeleccionadas);
-  //   }
-  // }
-
-  // agregarNuevaEspecialidad(){
-  //   console.log();
-  //   if(this.descripcionEspecialidad != ''){
-  //     this.especialidadAlta.descripcion = this.descripcionEspecialidad;
-
-  //     this.especialidadService.agregarEspecialidad(this.especialidadAlta);
-  //   }
-  // }
 
   obtenerPaisSeleccionado(pais: Pais){
     this.paisSeleccionado = pais;

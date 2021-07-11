@@ -66,7 +66,7 @@
             <div class="col-md-12 mb-2"><!--*ngIf="perfil=='paciente'">-->
               <label for="paisOrigen" class="form-label">País de origen</label>
               <input type="text" class="form-control" id="paisOrigen" placeholder="Ingrese pais de origen" formControlName='paisOrigen' value={{paisSeleccionado?.name}}>
-              <small class="invalid" *ngIf="formRegistro.get('paisOrigen')?.errors?.required && formRegistro.get('paisOrigen')?.touched">País de origen es requerido</small>
+              <!-- <small class="invalid" *ngIf="formRegistro.get('paisOrigen')?.errors?.required && formRegistro.get('paisOrigen')?.touched">País de origen es requerido</small> -->
             </div>
 
             <div class="col-md-6 mb-2">
@@ -83,7 +83,7 @@
           <hr class="my-4">
 
           <div class="row container">
-              <button type="submit" class="w-100 btn btn-primary btn-lg" [disabled]="signup">
+              <button type="submit" class="w-100 btn btn-primary btn-lg" [disabled]="signup" [disabled]="formRegistro.invalid">
                   <span *ngIf="signup" class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
                 Registro
               </button>
@@ -96,6 +96,6 @@
   </main>
 
   <footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">&copy; 2017–2021 Company Name</p>
+    <p class="mb-1">2021 Andrés Wüthrich</p>
   </footer>
 </div>

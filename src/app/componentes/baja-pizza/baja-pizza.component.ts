@@ -22,7 +22,7 @@ export class BajaPizzaComponent implements OnInit {
   
   async borrarPizza(pizza: Pizza){
     var documento: any = await this.pizzaService.obtenerDocumentoPizza(pizza);
-console.log("doc",documento);
+    console.log("doc",documento);
     // var pizzaDoc = this.afs.collection(this.dbPath).doc(documento);
     // console.log("pizDoc",pizzaDoc);
 

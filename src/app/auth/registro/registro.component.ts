@@ -43,33 +43,10 @@ export class RegistroComponent implements OnInit {
       // 'imagen':['', Validators.required]
     });
 
-    // this.especialidadService.traerTodas().subscribe((especialidades: Especialidad[]) => {
-    //   console.log(especialidades);
-    //   this.listaEspecialidades = especialidades;
-    // });
-
   }
 
   ngOnInit(): void {
-    // this.agregarDias();
   }
-
-  // agregarDias() {
-
-  //   this.listaDiasSeleccionadas.push(new DiasAtencion(true, 'Lunes', 8, 19));
-  //   this.listaDiasSeleccionadas.push(new DiasAtencion(true, 'Martes', 8, 19));
-  //   this.listaDiasSeleccionadas.push(new DiasAtencion(true, 'Miercoles', 8, 19));
-  //   this.listaDiasSeleccionadas.push(new DiasAtencion(true, 'Jueves', 8, 19));
-  //   this.listaDiasSeleccionadas.push(new DiasAtencion(true, 'Viernes', 8, 19));
-  //   this.listaDiasSeleccionadas.push(new DiasAtencion(true, 'Sabado', 8, 14));
-
-  // }
-
-  // private onCaptchaComplete(response: any) {
-  //   console.log('reCAPTCHA response recieved:');
-  //   console.log(response.success);
-  //   console.log(response.token);
-  // }
 
   elegirPerfil(perfil: string){
     this.perfil = perfil;
@@ -98,67 +75,12 @@ export class RegistroComponent implements OnInit {
       // this.usuarioAlta.imagenPerfil = this.formRegistro.controls['imagen'].value;
       // this.usuarioAlta.uid = this.auth.usuario.uid;
       this.usuarioAlta.uid = value?.user?.uid;
- 
-      // if(this.perfil=='paciente'){
-      //   this.usuarioAlta.imagenPerfil2 = this.formRegistro.controls['imagen2'].value;
-      //   this.usuarioAlta.obraSocial = this.formRegistro.controls['obraSocial'].value;
-      //   this.usuarioAlta.cuentaAprobada = true;
-        
-      //   console.log(this.imagenPerfil);
-      //   console.log(this.imagenPerfil2);
-      //   this.usuarioService.agregarPaciente(this.imagenPerfil, this.imagenPerfil2, this.usuarioAlta);
-        // this.email = this.password = '';
-  
-      // } else {
-        // this.usuarioAlta.especialidad = this.formRegistro.controls['especialidad'].value;
-        // this.usuarioAlta.especialidad = this.listaEspecialidadesSeleccionadas;
 
-        // this.listaDiasSeleccionadas.push(new DiasAtencion(true, 'Lunes', 8, 19));
-        // this.listaDiasSeleccionadas.push(new DiasAtencion(true, 'Martes', 8, 19));
-        // this.listaDiasSeleccionadas.push(new DiasAtencion(true, 'Miercoles', 8, 19));
-        // this.listaDiasSeleccionadas.push(new DiasAtencion(true, 'Jueves', 8, 19));
-        // this.listaDiasSeleccionadas.push(new DiasAtencion(true, 'Viernes', 8, 19));
-        // this.listaDiasSeleccionadas.push(new DiasAtencion(true, 'Sabado', 8, 14));
+      this.usuarioService.agregarUsuario(this.usuarioAlta);
 
-        // this.usuarioAlta.horarioAtencion = this.listaDiasSeleccionadas;
-
-        // console.log(this.imagenPerfil);
-        // this.usuarioService.agregarEspecialista(this.imagenPerfil, this.usuarioAlta);
-        this.usuarioService.agregarUsuario(this.usuarioAlta);
-        // this.email = this.password = '';
-      // }
-      // this.router.navigate(['verificacion-email']);
       this.router.navigate(['bienvenida']);
       });
     // console.log(this.auth.usuario.uid);
   }
 
-  // cargarImagen(event: any): void {
-  //   this.imagenPerfil = event.target.files[0];
-  //   console.log(this.imagenPerfil);
-  // }
-
-  // cargarImagen2(event: any): void {
-  //   this.imagenPerfil2 = event.target.files[0];
-  //   console.log(this.imagenPerfil2);
-  // }
-
-  // agregarEspecialidad(especialidad: Especialidad){
-  //   this.banderaEspecialidadSeleccionada = false;
-  //   if(this.listaEspecialidadesSeleccionadas.includes(especialidad)){
-
-  //   } else{
-  //     this.listaEspecialidadesSeleccionadas.push(especialidad);
-  //     this.formRegistro.controls['especialidad'].setValue(this.listaEspecialidadesSeleccionadas);
-  //   }
-  // }
-
-  // agregarNuevaEspecialidad(){
-  //   console.log();
-  //   if(this.descripcionEspecialidad != ''){
-  //     this.especialidadAlta.descripcion = this.descripcionEspecialidad;
-
-  //     this.especialidadService.agregarEspecialidad(this.especialidadAlta);
-  //   }
-  // }
 }

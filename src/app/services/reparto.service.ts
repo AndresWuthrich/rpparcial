@@ -33,14 +33,6 @@ export class RepartoService {
     }));
 
     var usuarioActual = this.auth.obtenerUsuarioActual();
-
-    // if(usuarioActual?.email != null){
-    //   var datosUsuario: any = this.obtenerUsuarioPorEmail(usuarioActual?.email);
-    //   console.log('DATO USER' + datosUsuario);
-    //   this.usuarioLogueado = datosUsuario;
-    // }
-    // console.log('data' + this.usuarioLogueado?.horarioAtencion);
-
    }
 
   agregarReparto(reparto: Reparto){

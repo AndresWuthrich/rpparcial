@@ -25,10 +25,6 @@ export class AuthService {
     });
    }
 
-  // async sendVerificationEmail():Promise<void>{
-  //   return (await this.fireStoreAuth.currentUser)?.sendEmailVerification();
-  // }
-
   async  Registro(email: string, password: string){
     try{
     const usuarioRegistrado = await this.fireStoreAuth.createUserWithEmailAndPassword(email, password);
@@ -52,39 +48,13 @@ export class AuthService {
   }
 
   async Ingresar(email: string, password: string){
-  //    this.fireStoreAuth
-  //   .signInWithEmailAndPassword(email, password)
-  //   .then(value =>{
-  //     console.log("Ingreso exitoso");
-      
-  //     // this.router.navigate(['bienvenido']);
-  //   })
-  //   .catch(error =>  {
-  //     this.errorLogin = error.message;
 
-  //     Swal.fire({
-  //       title: error.code,
-  //       text: error.message
-  //     });
-  //   });
-  // }
-  
-  try{
-  const resultado = await this.fireStoreAuth
-  .signInWithEmailAndPassword(email, password);
-  // .then(value =>{
-  //   console.log("Ingreso exitoso");
+    try{
+    const resultado = await this.fireStoreAuth
+    .signInWithEmailAndPassword(email, password);
     
-  //   // this.router.navigate(['bienvenido']);
-  // })
-    
-  // if(resultado.user?.emailVerified==false){
-  //   console.log('Envio de verificacion exitoso');
-    // this.sendVerificationEmail();
-  // }
-  
-  console.log("res ",resultado);
-  return resultado;
+    console.log("res ",resultado);
+    return resultado;
   }catch(error)  {
   // //   this.errorLogin = error.message;
      console.log(error);

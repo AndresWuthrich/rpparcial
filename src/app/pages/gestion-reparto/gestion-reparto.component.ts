@@ -16,6 +16,7 @@ export class GestionRepartoComponent implements OnInit {
 
   listaRepartidores!: Repartidor[];
   listaPizzas!: Pizza[];
+  listaPizzas2!: Pizza[];
   listaPizzasSeleccionadas!: Pizza[];
   repartidorSeleccionado: Repartidor | null = null;
   pizzaSeleccionada: Pizza | null = null;
@@ -24,19 +25,22 @@ export class GestionRepartoComponent implements OnInit {
   public repartoAlta: Reparto = new Reparto();
 
   constructor(private repartidorService: RepartidorService, private pizzaService: PizzaService, private repartoService: RepartoService) {
-      this.repartidorService.traerTodos().subscribe((repartidores: Repartidor[]) => {
-      console.log(repartidores);
+    this.repartidorService.traerTodos().subscribe((repartidores: Repartidor[]) => {
+      console.log("r ",repartidores);
       this.listaRepartidores = repartidores;
   
     });
 
+    // this.listaPizzasSeleccionadas=[];
+
     this.pizzaService.traerTodas().subscribe((pizzas: Pizza[]) => {
-      console.log(pizzas);
+      console.log("p ",pizzas);
       this.listaPizzas = pizzas;
   
+      console.log("p1 ",this.listaPizzas);
     });
-    this.signup = false;
 
+    this.signup = false;
    }
 
   ngOnInit(): void {
@@ -46,6 +50,7 @@ export class GestionRepartoComponent implements OnInit {
     this.repartidorSeleccionado = repartidor;
     console.log(this.repartidorSeleccionado);
     this.listaPizzasSeleccionadas=[];
+    // this.listaPizzas2=[];
   }
 
   obtenerPizzaSeleccionada(pizza: Pizza){
@@ -56,6 +61,21 @@ export class GestionRepartoComponent implements OnInit {
       if(this.listaPizzasSeleccionadas.length < this.repartidorSeleccionado?.capacidadTrans)
       {
         this.listaPizzasSeleccionadas.push(pizza);
+
+        this.listaPizzas2=[];
+        this.listaPizzas.forEach(pizza => {
+          var flag = 0;
+          this.listaPizzasSeleccionadas.forEach(pizzaSel => {
+            if(pizza == pizzaSel)
+            { flag = 1;}
+          })
+          if(flag == 0){
+            this.listaPizzas2.push(pizza);
+          }        
+        });
+        console.log("p2 ",this.listaPizzas2);
+        this.listaPizzas = this.listaPizzas2;
+
       } else{
         this.limite = "Alcanzó el límite de capacidad de transporte";
       }  

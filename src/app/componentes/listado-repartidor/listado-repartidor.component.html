@@ -5,7 +5,7 @@
     <li class="list-group-item d-flex justify-content-between" *ngFor="let repartidor of listaRepartidores"
       (click)="enviarEventoRepartidorSeleccionado(repartidor)">
         <div>
-            <h6 class="text-info">{{repartidor.nombre}} {{repartidor.apellido}} Capacidad:{{repartidor.capacidadTrans}} </h6>
+            <h6 class="text-info">{{repartidor.nombre}} {{repartidor.apellido}}, Capacidad de transporte: {{repartidor.capacidadTrans}} </h6>
         </div>
     </li>
 </ul>

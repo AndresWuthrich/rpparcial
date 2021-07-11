@@ -1,9 +1,6 @@
 <body class="body text-center">
 
     <div class="col-md-6">
-      <!-- <div  *ngIf="!(auth.usuario | async)"> CON ESTO NO ANDA-->
-        <!-- <form class="form-signin"> -->
-      <!-- <img class="mb-4" src="./assets/imagenes/loginadw.jpg " alt="" width="72" height="72"> -->
       <h1 class="h3 mb-3 font-weight-normal">Iniciar sesión</h1>
       
       <div class="row justify-content-around form">
@@ -25,14 +22,11 @@
   
       <div class="justify-content-around form">
         <button class="btn btn-lg btn-outline-primary"(click)="Ingresar()">  <!--[disabled]="loading" type="submit" style="margin: 5px" -->
-          <!-- <img width="24px" src="../../../assets/imagenes/adn.gif" /> -->
           <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
           Ingresar
         </button> 
         
         <button class="btn btn-lg btn-outline-danger" style="margin: 5px" routerLink="/">Cancelar</button>
-    
-        <!-- <button class="btn btn-lg btn-outline-success" type="submit" style="margin: 5px" routerLink="/registro">Registrarse</button> -->
       </div>
     </div>
 
@@ -56,5 +50,4 @@
             </ul>
       </div>
     </div>
-    <!-- </form> -->
   </body>

@@ -1,7 +1,6 @@
 <app-navbar></app-navbar>
 <br>
-<!-- 
-<p>gestion-reparto works!</p> -->
+<!-- <p>gestion-reparto works!</p> -->
 
 <main>
     <div class="container py-4">
@@ -36,8 +35,7 @@
           <div class="h-100 p-5 bg-light border rounded-3">
             <h2>Reparto</h2>
             <h5 *ngIf="repartidorSeleccionado">{{repartidorSeleccionado?.nombre}}</h5>
-            <!-- <h5 *ngIf="pizzaSeleccionada">{{pizzaSeleccionada?.nombre}}</h5> -->
-
+     
                   <ul>
                       <li *ngFor="let pizza of listaPizzasSeleccionadas">{{pizza.nombre}}</li>
                   </ul>

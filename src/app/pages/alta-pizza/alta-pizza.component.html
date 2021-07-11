@@ -1,8 +1,5 @@
-<!-- <form #captchaProtectedForm="ngForm"> -->
     <body class="container">
-      <!-- <button class="btn fotoPaciente" (click)="elegirPerfil('paciente')" *ngIf="perfil!='paciente' && perfil!='especialista'">Paciente</button>
-      <button class="btn fotoEspecialista" (click)="elegirPerfil('especialista')" *ngIf="perfil!='paciente' && perfil!='especialista'">Especialista</button> -->
-    
+
       <div> <!--*ngIf="perfil=='paciente' || perfil=='especialista'" class="paciente" [ngClass]="{especialista: perfil=='especialista'}">-->
         <form [formGroup]="formRegistro" (ngSubmit)="registro()"> <!--*ngIf="perfil=='paciente' || perfil=='especialista'">-->
           <div class="row">
@@ -37,7 +34,7 @@
 
             <div class="row container">
               <div class="col-md-12 d-grid">
-                <button type="submit" class="w-100 btn btn-lg btn-primary" [disabled]="signup">
+                <button type="submit" class="w-100 btn btn-lg btn-primary" [disabled]="signup" [disabled]="formRegistro.invalid">
                     <span *ngIf="signup" class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
                   Registro
                 </button>
@@ -51,19 +48,4 @@
           </div>
         </form>
       </div>
-    
-      <!-- <div class="col-md-12" id="box" *ngIf="perfil=='especialista'">
-        <div class="card">
-            <div class="card-body">
-                <div class="form-group col-md-5">
-                    <label class="col-form-label" for="descripcionEspecialidad">Nueva especialidad</label>
-                    <input type="text" class="form-control" id="descripcionEspecialidad" [(ngModel)]="descripcionEspecialidad"
-                        name="descripcionEspecialidad" placeholder="Ingrese el nombre de la especialidad">
-    
-                    <button type="button" class="btn btn-primary btn-block" (click)="agregarNuevaEspecialidad()">Agregar Especialidad</button>
-                </div>
-            </div>
-        </div>
-      </div> -->
     </body>
-    <!-- </form> -->
